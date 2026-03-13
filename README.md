@@ -12,6 +12,7 @@ TON testnet interaction and consensus-research tooling for the TON Consensus Bug
 ## Current contents
 
 - `skills/ton-testnet-consensus` — skill scaffold and contest workflow
+- `scripts/testnet_probe.ts` — fetch testnet config and test TCP reachability to listed liteservers
 
 ## Runtime choice
 

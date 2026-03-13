@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "bootstrap:testnet": "bash skills/ton-testnet-consensus/scripts/bootstrap_testnet_env.sh",
+    "probe:testnet": "tsx scripts/testnet_probe.ts",
     "check": "node -e \"console.log('ok')\""
   },
   "devDependencies": {
