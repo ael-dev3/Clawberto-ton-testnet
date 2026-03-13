@@ -13,6 +13,7 @@ TON testnet interaction and consensus-research tooling for the TON Consensus Bug
 
 - `skills/ton-testnet-consensus` — skill scaffold and contest workflow
 - `scripts/testnet_probe.ts` — fetch testnet config and test TCP reachability to listed liteservers
+- `scripts/testnet_self_faucet.ts` — derive Wallet V5 testnet bootstrap address and fund fresh testnet recipients once the bootstrap wallet is funded
 
 ## Runtime choice
 
