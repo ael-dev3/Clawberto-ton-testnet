@@ -1,0 +1,14 @@
+{
+  "name": "clawberto-ton-testnet",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "bootstrap:testnet": "bash skills/ton-testnet-consensus/scripts/bootstrap_testnet_env.sh",
+    "check": "node -e \"console.log('ok')\""
+  },
+  "devDependencies": {
+    "typescript": "^5.8.2",
+    "tsx": "^4.19.3"
+  }
+}
