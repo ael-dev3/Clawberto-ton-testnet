@@ -33,7 +33,12 @@ Reason:
    - Model **global config** and **local node config** as separate layers.
    - If needed, inspect the `testnet` branch of `ton-blockchain/ton` directly.
 
-2. **Study the hot path**
+2. **Handle funding correctly**
+   - Read `references/bootstrap-funding.md` before treating public testnet as executable.
+   - Treat bootstrap liquidity as a separate problem from wallet derivation.
+   - Official public bootstrap is human-gated; after the first seed, use the repo self-faucet flow.
+
+3. **Study the hot path**
    Focus in this order:
    - `validator/consensus/simplex/consensus.cpp`
    - `validator/consensus/simplex/votes.cpp`
@@ -93,3 +98,4 @@ Reason:
 
 - Read `references/contest-workflow.md` for the challenge-grounded operating model and report checklist.
 - Read `references/fullnode-howto-notes.md` for the useful extracted TON full-node/testnet interaction details.
+- Read `references/bootstrap-funding.md` for the actual tested public-testnet bootstrap path, failed legacy path, and post-bootstrap self-faucet workflow.
