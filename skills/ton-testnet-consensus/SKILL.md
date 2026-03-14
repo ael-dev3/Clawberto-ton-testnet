@@ -99,3 +99,4 @@ Reason:
 - Read `references/contest-workflow.md` for the challenge-grounded operating model and report checklist.
 - Read `references/fullnode-howto-notes.md` for the useful extracted TON full-node/testnet interaction details.
 - Read `references/bootstrap-funding.md` for the actual tested public-testnet bootstrap path, failed legacy path, and post-bootstrap self-faucet workflow.
+- Read `references/first-candidate-pinning.md` when evaluating the equivocating-leader / first-candidate-pinning hypothesis.

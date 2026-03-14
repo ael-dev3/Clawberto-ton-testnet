@@ -12,9 +12,14 @@ TON testnet interaction and consensus-research tooling for the TON Consensus Bug
 ## Current contents
 
 - `skills/ton-testnet-consensus` — skill scaffold and contest workflow
+- `skills/ton-testnet-consensus/scripts/ton_testnet_chat.ts` — deterministic JSON command surface
+- `skills/ton-testnet-consensus/scripts/ton_testnet_smoke.ts` — live smoke probe against current liteservers
 - `skills/ton-testnet-consensus/references/bootstrap-funding.md` — actual tested bootstrap funding path and post-bootstrap self-faucet workflow
-- `scripts/testnet_probe.ts` — fetch testnet config and test TCP reachability to listed liteservers
-- `scripts/testnet_self_faucet.ts` — derive Wallet V5 testnet bootstrap address and fund fresh testnet recipients once the bootstrap wallet is funded
+- `skills/ton-testnet-consensus/references/first-candidate-pinning.md` — code-path note + pass/fail criteria for the leader-pinning hypothesis
+- `src/ton_testnet.ts` — shared TypeScript probe/bootstrap/self-faucet logic
+- `src/pinning_sim.ts` — deterministic local simulation of the first-candidate-pinning hypothesis
+- `scripts/testnet_probe.ts` — thin compatibility wrapper for liteserver probing
+- `scripts/testnet_self_faucet.ts` — thin compatibility wrapper for bootstrap wallet status / self-faucet sending
 
 ## Runtime choice
 
@@ -25,6 +30,7 @@ Reason:
 - easy HTTP/process wrappers
 - fast iteration with `tsx`
 - consistent with existing Node-based Clawberto blockchain tooling
+- lets the repo keep one deterministic JSON-first command surface instead of ad-hoc shell glue
 
 ## Secure key storage
 
@@ -61,3 +67,13 @@ What we tried to avoid the manual step:
 
 Result:
 - none of those replaced first-value funding cleanly
+
+## Commands
+
+```bash
+npm run --silent ton -- "ton help"
+npm run --silent ton -- "ton probe --out-dir /tmp/ton-testnet-probe"
+npm run --silent ton -- "ton pinning-sim --scenario single-slot"
+npm run --silent ton -- "ton pinning-sim --scenario window --window-slots 5"
+npm run smoke:pinning
+```

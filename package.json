@@ -4,10 +4,14 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
+    "ton": "node --import tsx skills/ton-testnet-consensus/scripts/ton_testnet_chat.ts",
     "bootstrap:testnet": "bash skills/ton-testnet-consensus/scripts/bootstrap_testnet_env.sh",
-    "probe:testnet": "tsx scripts/testnet_probe.ts",
-    "self-faucet:testnet": "tsx scripts/testnet_self_faucet.ts",
-    "check": "node -e \"console.log('ok')\""
+    "probe:testnet": "node --import tsx scripts/testnet_probe.ts",
+    "self-faucet:testnet": "node --import tsx scripts/testnet_self_faucet.ts",
+    "smoke:testnet": "node --import tsx skills/ton-testnet-consensus/scripts/ton_testnet_smoke.ts",
+    "smoke:pinning": "node --import tsx skills/ton-testnet-consensus/scripts/ton_pinning_smoke.ts",
+    "typecheck": "tsc --noEmit",
+    "check": "npm run typecheck && npm run smoke:testnet && npm run smoke:pinning"
   },
   "devDependencies": {
     "tsx": "^4.19.3",
