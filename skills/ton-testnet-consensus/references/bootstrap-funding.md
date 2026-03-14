@@ -1,5 +1,11 @@
 # TON Testnet Bootstrap Funding
 
+## Current conclusion
+
+For now, a **human operator is required** to obtain the initial public-testnet funds.
+
+Once the first seed lands, the workflow becomes programmatic again.
+
 ## What actually worked
 
 ### Manual first drip via official bot
@@ -18,7 +24,7 @@ Observed funded state after the manual bot request:
 That state is acceptable.
 A funded wallet can remain `uninitialized` until its first outgoing transaction.
 
-## What did not work
+## What we tried to bypass the manual step
 
 ### Legacy public `testgiver.fif` path
 
@@ -30,6 +36,30 @@ Observed failure:
 - no funds received
 
 Treat that path as obsolete/unreliable for public bootstrap unless proven otherwise with a real Fift byte-for-byte repro.
+
+### TON Center message submission as a faucet shortcut
+
+Tried:
+- `sendBoc`
+- `sendQuery`
+
+Observed failures:
+- direct external message to the public giver was rejected
+- `sendQuery` path returned HTTP-level failure in this runtime
+
+This did not solve bootstrap liquidity.
+It only attempted message delivery to a contract that still has to accept and fund the request.
+
+### Automating the official public bot
+
+Tried:
+- Telegram tool path to `@testgiver_ton_bot`
+- browser path to bot/web handoff
+
+Observed blockers:
+- Telegram recipient resolution failed in this runtime
+- browser automation path was unavailable at the time
+- the official bot still requires a captcha
 
 ### Pure zero-balance bootstrap by RPC alone
 
@@ -53,11 +83,13 @@ After the first seed lands:
 3. let those funded addresses remain `uninitialized` until they need to send
 4. activate/bootstrap them with their first outgoing transaction later when needed
 
-## Why this is the right split
+## General thoughts
 
 - public testnet is usable for agent workflows **after bootstrap**
 - public testnet is not a good fully unattended bootstrap surface
 - the hard blocker is first-value funding, not Wallet V5 derivation or TON Center transport
+- for repeated automated work, prefer sandbox / local own-net and reserve public testnet for smoke/integration passes
+- if the operator can solve the captcha once, the repo self-faucet flow becomes the practical programmatic path afterward
 
 ## Exact local tools in this repo
 

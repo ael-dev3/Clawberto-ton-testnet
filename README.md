@@ -49,7 +49,15 @@ What did not work reliably:
 - pure zero-balance bootstrap by RPC/message submission alone
 
 Operational model now:
-1. manual first seed
+1. human operator solves the first-funding step for now
 2. programmatic self-faucet after funding
 3. public testnet for smoke/integration only
 4. sandbox/local own-net for most automation
+
+What we tried to avoid the manual step:
+- legacy direct `testgiver.fif` public path
+- TON Center message-submission shortcut attempts
+- bot/browser automation handoff in this runtime
+
+Result:
+- none of those replaced first-value funding cleanly
